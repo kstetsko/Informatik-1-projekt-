@@ -19,5 +19,4 @@
 - wollen wir den ganzen ersten Level von Watergirl and Fireboy kopieren?
 - wenn nein, was ausschneiden?
 - was noch? 
-
-
+<img width="901" height="510" alt="image" src="https://github.com/user-attachments/assets/a267df8e-0c5f-4e72-9aa9-7365868f9d0e" />

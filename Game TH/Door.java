@@ -10,8 +10,7 @@ public class Door {
         this.h = h;
     }
 
-    void draw(){
-        System.out.println("Door.draw: x=" + x + " y=" + y + " w=" + w + " h=" + h);
+    void draw(){    
         Draw.filledRect((int)x, (int)y, (int)w, (int)h);
     }
 }

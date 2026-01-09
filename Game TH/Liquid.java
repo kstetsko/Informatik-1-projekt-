@@ -30,15 +30,14 @@ abstract class Liquid {
     // Handle player interaction with this liquid: if player is inside
     // and not allowed, teleport them back to their start position.
     public void handlePlayer(Player player){
-        if (!Liquid.intersects(player, this)) return;
+        if (!Liquid.intersects(player, this)) {
+            return;
+        }
 
         if (canPlayerEnter(player)){
             // player is allowed in this liquid — no action here
             return;
-        }
-
-        // teleport player back to their start
-        player.resetToStart();
+        }else{player.resetToStart();}
     }
     
 }

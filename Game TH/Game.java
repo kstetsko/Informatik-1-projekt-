@@ -38,8 +38,7 @@ public class Game {
         Platform platform4 = new Platform(300, 600, 400, 50);
         Platform platform5 = new Platform(750, 500, 200, 50);
 
-
-        //Doors (wider than player so player can fit fully)
+        // Doors
         Door door1 = new Door(850, 840, 60, 60);
         Door door2 = new Door(700, 640, 60, 60);
 
@@ -52,7 +51,7 @@ public class Game {
         // Lists of platforms and players
         Player[] players = new Player[] { player1, player2 };
         Platform[] platforms = new Platform[] { platform1, platform2, platform3, platform4, platform5 };
-        Door[] doors = new Door[] { door1, door2 };
+       // Door[] doors = new Door[] { door1, door2 };
         double lastTime = System.nanoTime() / 1e9;
 
         while (true) {
@@ -65,12 +64,17 @@ public class Game {
                 p.handleInput();
                 p.update(dt);
             }
-
-            // Разрешение столкновений игроков со всеми платформами
+Liquid[] liquids = new Liquid[] { acid1, water1, lava1 };
             for (Player p : players) {
-                p.onGround = false; // по умолчанию в воздухе
+                for (Liquid li : liquids) {
+                    li.handlePlayer(p);
+                }
+            }
+            // Allow players to interact with platforms
+            for (Player p : players) {
+                p.onGround = false; // in the air by default
 
-                for (Platform pl : platforms) {
+                for (Platform pl : platforms) { // check collision with each platform
                     if (!intersects(p, pl)) continue;
 
                     double overlapX = Math.min(p.x + p.w, pl.x + pl.w) - Math.max(p.x, pl.x);
@@ -79,7 +83,7 @@ public class Game {
                     if (overlapX <= 0 || overlapY <= 0) continue;
 
                     if (overlapX < overlapY) {
-                        // Разрешаем по горизонтали
+                        // allow horizontal movement
                         if (p.x < pl.x) {
                             p.x -= overlapX;
                         } else {
@@ -87,14 +91,14 @@ public class Game {
                         }
                         p.vx = 0;
                     } else {
-                        // Разрешаем по вертикали
+                        // allow vertical movement
                         if (p.y < pl.y) {
-                            // Игрок сверху платформы — приземление
+                            // Player is above the platform — landing on it     
                             p.y = pl.y - p.h;
                             p.vy = 0;
                             p.onGround = true;
                         } else {
-                            // Игрок снизу платформы — отталкиваем вниз
+                            // Player is below the platform — push down
                             p.y = pl.y + pl.h;
                             p.vy = 0;
                         }
@@ -128,7 +132,8 @@ public class Game {
             water1.draw();
             lava1.draw();
 
-             // Check liquid interactions
+            // Check liquid interactions: teleport or block players when necessary
+            
 
             Draw.syncToFrameRate(); 
 

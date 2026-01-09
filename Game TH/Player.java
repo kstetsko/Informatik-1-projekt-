@@ -7,7 +7,7 @@ public class Player {
 
     double vx = 0 ; 
     double vy = 0; // x, y speed
-
+    
     double speed = 300; // px pro sec
     double g = 900; // px pro sec*sec (positive -> pulls down)
 

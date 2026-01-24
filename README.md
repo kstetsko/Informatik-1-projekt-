@@ -6,13 +6,13 @@
 - Flüssigkeiten
 - Tod bzw respawn
 - Tür
+- Bewegende Plattform mit Triggerbereich
 
 ## Zu machen
 - Texturen
 - Collectibles
 - Sound
 - Animation (Spieler, Flüssigkeiten, Tür)
-- bewegliche Platformen + Taste + Ausheber (siehe Fragen)
 - Korb zu bewegen (siehe Fragen)
 
 ## Fragen
